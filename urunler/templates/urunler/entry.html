@@ -1,0 +1,32 @@
+<h1>Ürün Girişi</h1>
+<form method="post">
+    {% csrf_token %}
+    <label>Barkod:</label>
+    <input type="text" name="barcode" required><br>
+    <label>Adı (yeni ürün için):</label>
+    <input type="text" name="name"><br>
+    <label>Giriş Miktarı:</label>
+    <input type="number" step="any" name="quantity" required><br>
+    <label>Birim:</label>
+    <select name="unit">
+        <option value="adet">Adet</option>
+        <option value="kilo">Kilo</option>
+        <option value="koli">Koli</option>
+    </select><br>
+
+    <label>Birim Tipi (yeni ürün için):</label>
+    <select name="unit_type">
+        <option value="adet">Adet</option>
+        <option value="kilo">Kilo</option>
+        <option value="koli">Koli</option>
+        <option value="adet-koli">Adet + Koli</option>
+    </select><br>
+    <label>Koli içindeki adet (adet-koli için):</label>
+    <input type="number" name="unit_per_package"><br>
+
+    <button type="submit">Gönder</button>
+</form>
+
+{% for message in messages %}
+    <p style="color:green;">{{ message }}</p>
+{% endfor %}
